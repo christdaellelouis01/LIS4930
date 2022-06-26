@@ -1,0 +1,57 @@
+import sys
+import os
+import datetime
+
+# 1. Revise it to current time
+from datetime import datetime
+from datetime import date
+from datetime import time
+
+def main():
+    dt = datetime.now()
+    time_string = dt.strftime("%X")
+    """https://strftime.org"""
+    for line in sys.stdin:
+        data = line.strip().split("\t")
+        if len(data) == 6:
+          _date, _time, store, item, cost, payment = data
+          print("{dt}\t{time_string}\t{store}\t{item}\t{cost}\t{payment}")
+          os._exit(0)
+
+main()
+
+# 2. Add timedelta and subtract 60 second and added 2 year
+
+old_time = datetime.datetime(2022, 6, 26, 12, 11, 2)
+print('Old time: ', old_time)
+change_seconds = datetime.timedelta(seconds = 60)
+new_seconds = old_time - change_seconds
+change_year = datetime.timedelta(weeks = 104)
+new_year = old_time + change_year
+print(("new time: {0}{1}\n").format(new_seconds, new_year))
+
+# 3.Create a timedelta object representing 100 days, 10 hours, and 13 minutes.
+from datetime import timedelta
+
+d = timedelta(microseconds = -1)
+
+def timedelta_object():
+  days = datetime.timedelta(days = 100)
+  h = datetime.timedelta(hours = 10)
+  m = datetime.timedelta(minutes = 13)
+  print(("{0} days {1} hours and {2} minutes.\n") .format(days, h, m))
+
+timedelta_object()
+
+# 4.write a timedelta object that takes two arguments with this time object
+from datetime import datetime
+
+datetime_object = datetime.now()
+print(datetime_object)
+print('type:- ', type(datetime_object))
+
+def func(f, i):
+  time = datetime.now()
+  print(("\nFeet: {0} \nInches: {1} \nTime: {2}") .format(f, i, time))
+
+func(12,13)
