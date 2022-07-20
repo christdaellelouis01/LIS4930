@@ -1,0 +1,17 @@
+import pandas as pd
+
+df = pd.read_csv(r'C:\Users\cloui\OneDrive\Desktop\FinalProject\amazonorders\amazonOrders.csv')
+pd.set_option('display.max_columns', None) #Displays the maximum number of colums
+df.iloc[:,[1,2,28,29,30]] #Displays a vertain number of columns
+df = df.fillna(0) #Replaces all NaN with 0
+
+#changes the item total string into a float
+df["Item Total"] = df["Item Total"].str.replace('$','').astype(float)
+df["Item Subtotal Tax"] = df["Item Subtotal Tax"].str.replace('$','').astype(float)  
+print(df)
+
+print('Total Amount Spent:','{:.2f}'.format(df["Item Total"].sum())) #calculates the total amount spent
+print('Total Spent on Taxes:','{:.2f}'.format(df["Item Subtotal Tax"].sum())) # calculates the total amount spent on taxes
+print('Average Spent on Purchases:', '{:.2f}'.format(df["Item Total"].mean())) #calculates avarege spent on purchases
+print('Maximum Spent on a purchase:','{:.2f}'.format(df["Item Total"].max())) #calculates the maximum spent on one purchase
+print('Minimum Spent on a Purchase','{:.2f}'.format(df["Item Total"].min())) #calculates the least amount spent on a purchase
